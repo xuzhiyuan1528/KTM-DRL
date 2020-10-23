@@ -156,7 +156,7 @@ if __name__ == '__main__':
             ep_rewards[idx] += reward
 
             loss = None
-            if st >= cfg["step"]["observation"]:
+            if st >= cfg["step"]["observation"] + int(cfg["step"]["training"]["offline"]):
                 loss = policy.train_mt(idx, teacher, replay, cfg["train"]["batch_size"], is_offline=False)
 
             if dones[idx]:
